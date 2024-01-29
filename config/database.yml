@@ -8,13 +8,13 @@ default: &default
 
 development:
   <<: *default
-  database: hello_app_dev
+  database: weather_app_dev # Change the database name
   username: postgres
   password: password
 
 test:
   <<: *default
-  database: hello_app_test
+  database: weather_app_test # Change the database name
   username: postgres
   password: password
 
@@ -22,6 +22,6 @@ production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
   pool: <%= ENV['DB_POOL'] || 5 %>
-  database: hello_app_prod
+  database: weather_app_prod # Change the database name
   username: postgres
   password: password
