@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_003257) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_011826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,4 +39,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_003257) do
   end
 
   add_foreign_key "forecasts", "locations"
+  add_foreign_key "forecasts", "locations", name: "forecasts_locations_fk", on_delete: :cascade
 end
