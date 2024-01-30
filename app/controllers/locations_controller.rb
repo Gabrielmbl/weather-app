@@ -8,11 +8,11 @@ class LocationsController < ApplicationController
 
   # GET /locations/1 or /locations/1.json
   def show
-    latitude = 52.52
-    longitude = 13.41
+    #latitude = 52.52
+    #longitude = 13.41
 
-     weather_service = WeatherService.new(latitude, longitude)
-     @forecast = weather_service.forecast
+    #weather_service = WeatherService.new(latitude, longitude)
+    #@forecast = weather_service.forecast
 
   end
 
