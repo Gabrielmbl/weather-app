@@ -13,6 +13,7 @@ class LocationsController < ApplicationController
 
     #weather_service = WeatherService.new(latitude, longitude)
     #@forecast = weather_service.forecast
+    logger.info("SHOW")
 
   end
 

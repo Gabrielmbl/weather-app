@@ -2,7 +2,22 @@
 
 <%= render @location %>
 
-
+<div>
+  <h1>Weather Forecast For This location</h1>
+  <% if @forecast && @forecast['hourly']['temperature_2m'] %>
+    <ul>
+      <% @forecast['hourly']['temperature_2m'].each do |hourly_data| %>
+      <li>
+        Date: <%= hourly_data['timestamp'] %>,
+        High: <%= hourly_data['air_temperature']['values'][0]['value'] %>°C,
+        Low: <%= hourly_data['air_temperature']['values'][1]['value'] %>°C
+      </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>Could not retrieve weather forecast.</p>
+    <% end %>
+</div>
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
