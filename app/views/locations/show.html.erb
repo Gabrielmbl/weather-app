@@ -6,14 +6,14 @@
   <h1>Weather Forecast For This location</h1>
   <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
     <ul>
-      <% @forecast['hourly']['temperature_2m'].each do |hourly_data| %>
+      <% @forecast['hourly']['temperature_2m'].first(7).each_with_index do |temperature, index| %>
         <li>
-          <% if hourly_data['timestamp'] && hourly_data['air_temperature'] && hourly_data['air_temperature']['values'].is_a?(Array) %>
-            Date: <%= hourly_data['timestamp'] %>,
-            High: <%= hourly_data['air_temperature']['values'][0]['value'] %>°C,
-            Low: <%= hourly_data['air_temperature']['values'][1]['value'] %>°C
+          <% if @forecast['hourly']['time'][index] %>
+            Data: <%= @forecast['hourly']['time'][index] %>,
+            Máxima: <%= temperature %>°C,
+            Mínima: <%= @forecast['hourly']['temperature_2m'][index] %>°C
           <% else %>
-            <p>Weather data not available for this hour.</p>
+            <p>Dados meteorológicos não disponíveis para esta hora.</p>
           <% end %>
         </li>
       <% end %>
@@ -22,7 +22,6 @@
     <p>Could not retrieve weather forecast.</p>
   <% end %>
 </div>
-
 
 
 <div>
