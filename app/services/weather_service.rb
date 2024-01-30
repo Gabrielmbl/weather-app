@@ -7,6 +7,8 @@ class WeatherService
   end
 
   def forecast
-    self.class.get('/forecast', @options)
+    response = self.class.get('/forecast', @options)
+    puts "API Response: #{response}"
+    response
   end
 end
