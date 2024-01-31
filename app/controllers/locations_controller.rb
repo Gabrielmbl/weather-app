@@ -14,12 +14,11 @@ class LocationsController < ApplicationController
     weather_service = WeatherService.new(latitude, longitude)
     @forecast = weather_service.forecast
 
-    # Group temperature data by day
-    @daily_temperatures = @forecast['hourly']['temperature_2m'].each_slice(24).to_a
+    @daily_temperatures = daily_temperatures
+    @daily_max_temps = daily_temperatures.map { |day_temps| day_temps.compact.max }
+    @daily_min_temps = daily_temperatures.map { |day_temps| day_temps.compact.min }
+    @daily_dates = daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
 
-    # Calculate max and min temperature for each day
-    @daily_max_temps = @daily_temperatures.map { |day_temps| day_temps.compact.max }
-    @daily_min_temps = @daily_temperatures.map { |day_temps| day_temps.compact.min }
   end
 
 

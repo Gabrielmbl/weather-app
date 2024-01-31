@@ -3,15 +3,18 @@
 <%= render @location %>
 
 <div>
-  <% @daily_temperatures.each_with_index do |day_temps, index| %>
-    <div>
-      <p>Day <%= index + 1 %>: <%= day_temps.first['timestamp'] %></p>
-      <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
-      <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
-    </div>
+  <% if @daily_temperatures %>
+    <% @daily_temperatures.each_with_index do |day_temps, index| %>
+      <div>
+        <p>Date: <%= @daily_dates[index] %></p>
+        <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
+        <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No temperature data available.</p>
   <% end %>
 </div>
-
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
