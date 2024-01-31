@@ -14,28 +14,14 @@ class LocationsController < ApplicationController
     weather_service = WeatherService.new(latitude, longitude)
     @forecast = weather_service.forecast
 
-    if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m']
-      # Group temperature data by day
-      daily_temperatures = @forecast['hourly']['temperature_2m'].each_slice(24).to_a
+    # Group temperature data by day
+    @daily_temperatures = @forecast['hourly']['temperature_2m'].each_slice(24).to_a
 
-      # Calculate max and min temperature for each day
-      @daily_max_temps = daily_temperatures.map { |day_temps| day_temps.compact.max }
-      @daily_min_temps = daily_temperatures.map { |day_temps| day_temps.compact.min }
-
-      # Extract date for each day
-      @daily_dates = daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
-
-      # Assign necessary data to variables for the view
-      @daily_temperatures = daily_temperatures
-    else
-      # Handle the case where the forecast data is not as expected
-      flash[:alert] = "Error fetching weather forecast."
-      @daily_temperatures = []  # Set to an empty array to avoid nil error in the view
-      @daily_max_temps = []
-      @daily_min_temps = []
-      @daily_dates = []
-    end
+    # Calculate max and min temperature for each day
+    @daily_max_temps = @daily_temperatures.map { |day_temps| day_temps.compact.max }
+    @daily_min_temps = @daily_temperatures.map { |day_temps| day_temps.compact.min }
   end
+
 
 
   # GET /locations/new
