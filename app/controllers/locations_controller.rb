@@ -25,8 +25,8 @@ class LocationsController < ApplicationController
       # Extract date for each day
       @daily_dates = daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
 
-      # Now @daily_temperatures, @daily_max_temps, @daily_min_temps, and @daily_dates
-      # contain the necessary data for your view.
+      # Assign necessary data to variables for the view
+      @daily_temperatures = daily_temperatures
     else
       # Handle the case where the forecast data is not as expected
       flash[:alert] = "Error fetching weather forecast."
@@ -36,6 +36,7 @@ class LocationsController < ApplicationController
       @daily_dates = []
     end
   end
+
 
   # GET /locations/new
   def new
