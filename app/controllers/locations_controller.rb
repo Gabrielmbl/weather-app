@@ -21,6 +21,16 @@ class LocationsController < ApplicationController
 
   end
 
+  private
+
+  def daily_temperatures
+    hourly_temps = @forecast['hourly']['temperature_2m']
+    daily_temps = hourly_temps.each_slice(24).to_a
+    # Assuming each element of daily_temps is an array of hourly temperatures for a day
+    # You may need to adjust this based on the structure of your @forecast data
+    daily_temps
+  end
+
 
 
   # GET /locations/new
