@@ -6,10 +6,18 @@
   <% @daily_temperatures.each_with_index do |day_temps, index| %>
     <div>
       <p>Debug - Day Index: <%= index + 1 %></p>
-      <p>Debug - Timestamp: <%= day_temps.first['timestamp'] %></p>
+      <% if day_temps.first.is_a?(Hash) %>
+        <p>Debug - Timestamp: <%= day_temps.first['timestamp'] %></p>
+      <% else %>
+        <p>Debug - Timestamp: <%= day_temps.first %></p>
+      <% end %>
       <p>Debug - Max Temperature: <%= @daily_max_temps[index] %>°C</p>
       <p>Debug - Min Temperature: <%= @daily_min_temps[index] %>°C</p>
-      <p>Day <%= index + 1 %>: <%= DateTime.parse(day_temps.first['timestamp']).strftime('%Y-%m-%d') %></p>
+      <% if day_temps.first.is_a?(Hash) %>
+        <p>Day <%= index + 1 %>: <%= DateTime.parse(day_temps.first['timestamp']).strftime('%Y-%m-%d') %></p>
+      <% else %>
+        <p>Day <%= index + 1 %>: <%= DateTime.parse(day_temps.first).strftime('%Y-%m-%d') %></p>
+      <% end %>
       <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
       <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
     </div>
