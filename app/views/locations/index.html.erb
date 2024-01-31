@@ -2,13 +2,12 @@
 
 <h1>Locations</h1>
 
-<div>
-  <% @daily_temperatures.each_with_index do |day_temps, index| %>
-    <div>
-      <p>Date: <%= day_temps.first['timestamp'] %></p>
-      <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
-      <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
-    </div>
+<div id="locations">
+  <% @locations.each do |location| %>
+    <%= render location %>
+    <p>
+      <%= link_to "Show this location", location %>
+    </p>
   <% end %>
 </div>
 
