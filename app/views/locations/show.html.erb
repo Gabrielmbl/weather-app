@@ -4,23 +4,17 @@
 
 <div>
   <h1>Weather Forecast For This Location</h1>
-  <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
-    <ul>
-      <% @forecast['hourly']['temperature_2m'].each do |temperature| %>
-        <li>
-          <% if temperature['timestamp'] %>
-            Date: <%= temperature['timestamp'] %>,
-            High: <%= temperature %>°C,
-            Low: <%= temperature %>°C
-          <% else %>
-            <p>Weather data not available for this hour.</p>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+  <% if temperature['timestamp'] %>
+  <li>
+    Date: <%= temperature['timestamp'] %>,
+    High: <%= temperature %>°C,
+    Low: <%= temperature %>°C
+  </li>
   <% else %>
-    <p>Could not retrieve weather forecast.</p>
-  <% end %>
+  <li>
+    <p>Weather data not available for this hour.</p>
+  </li>
+<% end %>
 </div>
 
 
