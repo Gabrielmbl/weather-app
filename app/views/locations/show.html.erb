@@ -3,17 +3,17 @@
 <%= render @location %>
 
 <div>
-  <h1>Weather Forecast For This location</h1>
+  <h1>Weather Forecast For This Location</h1>
   <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
     <ul>
-      <% @forecast['hourly']['temperature_2m'].first(7).each_with_index do |temperature, index| %>
+      <% @forecast['hourly']['temperature_2m'].each do |temperature| %>
         <li>
-          <% if @forecast['hourly']['time'][index] %>
-            Data: <%= @forecast['hourly']['time'][index] %>,
-            Máxima: <%= temperature %>°C,
-            Mínima: <%= @forecast['hourly']['temperature_2m'][index] %>°C
+          <% if temperature['timestamp'] %>
+            Date: <%= temperature['timestamp'] %>,
+            High: <%= temperature %>°C,
+            Low: <%= temperature %>°C
           <% else %>
-            <p>Dados meteorológicos não disponíveis para esta hora.</p>
+            <p>Weather data not available for this hour.</p>
           <% end %>
         </li>
       <% end %>
