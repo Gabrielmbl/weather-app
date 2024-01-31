@@ -3,18 +3,24 @@
 <%= render @location %>
 
 <div>
-  <h1>Weather Forecast For This Location</h1>
-  <% if temperature['timestamp'] %>
-  <li>
-    Date: <%= temperature['timestamp'] %>,
-    High: <%= temperature %>°C,
-    Low: <%= temperature %>°C
-  </li>
+  <h1>Weather Forecast For This location</h1>
+  <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
+    <ul>
+      <% @forecast['hourly']['temperature_2m'].first(7).each_with_index do |temperature, index| %>
+        <li>
+          <% if @forecast['hourly']['time'][index] %>
+            Date: <%= @forecast['hourly']['time'][index] %>,
+            Max: <%= temperature %>°C,
+            Min: <%= @forecast['hourly']['temperature_2m'][index] %>°C
+          <% else %>
+            <p>Forecast not available for this hour.</p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% else %>
-  <li>
-    <p>Weather data not available for this hour.</p>
-  </li>
-<% end %>
+    <p>Could not retrieve weather forecast.</p>
+  <% end %>
 </div>
 
 
