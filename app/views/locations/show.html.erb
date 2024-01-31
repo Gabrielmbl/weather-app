@@ -5,7 +5,7 @@
 <div>
   <% @daily_temperatures.each_with_index do |day_temps, index| %>
     <div>
-      <p>Day <%= index + 1 %>: <%= day_temps.first['timestamp'] %></p>
+      <p>Day <%= index + 1 %>: <%= day_temps.first %></p>
       <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
       <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
     </div>
