@@ -28,7 +28,12 @@ class LocationsController < ApplicationController
     daily_temps = hourly_temps.each_slice(24).to_a
     # Assuming each element of daily_temps is an array of hourly temperatures for a day
     # You may need to adjust this based on the structure of your @forecast data
-    daily_temps
+
+    daily_temps.map do |day_temps|
+      day_temps.map do |hourly_temp|
+        hourly_temp['timestamp'] if hourly_temp.is_a?(Hash)
+      end
+    end
   end
 
 
