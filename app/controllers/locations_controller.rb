@@ -13,23 +13,7 @@ class LocationsController < ApplicationController
 
     weather_service = WeatherService.new(latitude, longitude)
     @forecast = weather_service.forecast
-
-    @daily_temperatures = daily_temperatures
-    @daily_max_temps = @daily_temperatures.map { |day_temps| day_temps.compact.max }
-    @daily_min_temps = @daily_temperatures.map { |day_temps| day_temps.compact.min }
-    @daily_dates = @daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
   end
-
-  private
-
-  def daily_temperatures
-    # Modify this method to extract and organize the temperature data by day
-    # For example, you might want to group by date and then get hourly temperatures for each day
-    # Replace this with the actual logic to structure your daily temperatures
-    @forecast['hourly']['temperature_2m'].group_by { |hourly_data| hourly_data['timestamp'].to_date }
-  end
-
-
 
   # GET /locations/new
   def new

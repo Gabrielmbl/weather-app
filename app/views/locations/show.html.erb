@@ -3,14 +3,22 @@
 <%= render @location %>
 
 <div>
-  <h1>Weather Forecast For This Location</h1>
-  <% if @daily_temperatures.present? %>
+  <h1>Weather Forecast For This location</h1>
+  <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
     <ul>
-      <% @daily_dates.each_with_index do |date, index| %>
+      <% daily_data = @forecast['hourly']['temperature_2m'].each_slice(24).first(7) %>
+      <% daily_data.each do |hourly_data| %>
         <li>
-          Date: <%= date %>,
-          High: <%= @daily_max_temps[index] %>°C,
-          Low: <%= @daily_min_temps[index] %>°C
+          <% date = hourly_data.first.split('T').first %>
+          <% max_temp = hourly_data.max %>
+          <% min_temp = hourly_data.min %>
+          <% if date && max_temp && min_temp %>
+            Date: <%= date %>,
+            High: <%= max_temp %>°C,
+            Low: <%= min_temp %>°C
+          <% else %>
+            <p>Weather data not available for this day.</p>
+          <% end %>
         </li>
       <% end %>
     </ul>
@@ -18,7 +26,6 @@
     <p>Could not retrieve weather forecast.</p>
   <% end %>
 </div>
-
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
