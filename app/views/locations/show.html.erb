@@ -3,14 +3,14 @@
 <%= render @location %>
 
 <div>
-  <h1>Weather Forecast For This location</h1>
+  <h1>Weather Forecast For This Location</h1>
   <% if @forecast && @forecast['hourly'] && @forecast['hourly']['temperature_2m'] %>
     <ul>
       <% daily_data = @forecast['hourly']['temperature_2m'].each_slice(24).first(7) %>
-      <% daily_data.each do |hourly_data| %>
+      <% daily_data.each_with_index do |hourly_data, day_index| %>
         <% logger.info(hourly_data) %>
         <li>
-          <% date = hourly_data.first.to_s.split('T').first %>
+          <% date = @forecast['hourly']['time'][day_index * 24].to_s.split('T').first %>
           <% max_temp = hourly_data.max %>
           <% min_temp = hourly_data.min %>
           <% if date && max_temp && min_temp %>
@@ -27,7 +27,6 @@
     <p>Could not retrieve weather forecast.</p>
   <% end %>
 </div>
-
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
