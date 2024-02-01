@@ -8,15 +8,19 @@
     <ul>
       <% daily_data = @forecast['hourly']['temperature_2m'].each_slice(24).first(7) %>
       <% daily_data.each do |hourly_data| %>
-      <% logger.info(hourly_data) %>
+        <% Rails.logger.info("hourly_data: #{hourly_data.inspect}") %>
         <li>
-          <% date = hourly_data.first.split('T').first %>
-          <% max_temp = hourly_data.max %>
-          <% min_temp = hourly_data.min %>
-          <% if date && max_temp && min_temp %>
-            Date: <%= date %>,
-            High: <%= max_temp %>°C,
-            Low: <%= min_temp %>°C
+          <% if hourly_data.first %>
+            <% date = hourly_data.first.split('T').first %>
+            <% max_temp = hourly_data.max %>
+            <% min_temp = hourly_data.min %>
+            <% if date && max_temp && min_temp %>
+              Date: <%= date %>,
+              High: <%= max_temp %>°C,
+              Low: <%= min_temp %>°C
+            <% else %>
+              <p>Weather data not available for this day.</p>
+            <% end %>
           <% else %>
             <p>Weather data not available for this day.</p>
           <% end %>
