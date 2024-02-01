@@ -10,6 +10,7 @@ class GeocodingService
 
   def geocode
     uri = URI.parse("https://geocode.xyz/#{URI.encode_www_form_component(@address)}?json=1&auth=182754041308105193597x90166")
+    puts "uri: #{uri}"
     response = Net::HTTP.get(uri)
     JSON.parse(response)
   end
