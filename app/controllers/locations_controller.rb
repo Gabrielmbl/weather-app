@@ -8,26 +8,40 @@ class LocationsController < ApplicationController
 
   # GET /locations/1 or /locations/1.json
   def show
-    @location = Location.find(params[:id])  # Assuming you have the Location model
+    @location = Location.find(params[:id])
 
-    geocoding_service = GeocodingService.new(@location.text_address)
-    geocoding_result = geocoding_service.geocode
+    # Try to get latitude and longitude from the IP API
+    ip_info_service = IPInfoService.new(@location.ip_address)
+    ip_info = ip_info_service.get_info
 
-    # Check if geocoding was successful
-    if geocoding_result['latt'].present? && geocoding_result['longt'].present?
-      latitude = geocoding_result['latt'].to_f
-      longitude = geocoding_result['longt'].to_f
-
-      weather_service = WeatherService.new(latitude, longitude)
-      @forecast = weather_service.forecast
-
-      @address = @location.text_address  # Use the text_address from the @location object
+    if ip_info['error'].nil? && ip_info['latitude'].present? && ip_info['longitude'].present?
+      # Successfully retrieved latitude and longitude from IP API
+      latitude = ip_info['latitude'].to_f
+      longitude = ip_info['longitude'].to_f
     else
-      # Handle geocoding error
-      flash[:alert] = 'Error in geocoding the address.'
-      redirect_to root_path
+      # Fallback to geocoding service
+      geocoding_service = GeocodingService.new(@location.text_address)
+      geocoding_result = geocoding_service.geocode
+
+      # Check if geocoding was successful
+      if geocoding_result['latt'].present? && geocoding_result['longt'].present?
+        latitude = geocoding_result['latt'].to_f
+        longitude = geocoding_result['longt'].to_f
+      else
+        # Handle both IP and geocoding errors
+        flash[:alert] = 'Error in retrieving location information.'
+        redirect_to root_path
+        return
+      end
     end
+
+    # Use latitude and longitude to fetch weather forecast
+    weather_service = WeatherService.new(latitude, longitude)
+    @forecast = weather_service.forecast
+
+    @address = @location.text_address  # Use the text_address from the @location object
   end
+
 
   # GET /locations/new
   def new
