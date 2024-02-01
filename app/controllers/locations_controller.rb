@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
 
     # Try to get latitude and longitude from the IP API
-    ip_info_service = IPInfoService.new(@location.ip_address)
+    ip_info_service = IpInfoService.new(@location.ip_address)
     ip_info = ip_info_service.get_info
 
     if ip_info['error'].nil? && ip_info['latitude'].present? && ip_info['longitude'].present?
