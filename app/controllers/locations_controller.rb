@@ -15,25 +15,18 @@ class LocationsController < ApplicationController
     @forecast = weather_service.forecast
 
     @daily_temperatures = daily_temperatures
-    @daily_max_temps = daily_temperatures.map { |day_temps| day_temps.compact.max }
-    @daily_min_temps = daily_temperatures.map { |day_temps| day_temps.compact.min }
-    @daily_dates = daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
-
+    @daily_max_temps = @daily_temperatures.map { |day_temps| day_temps.compact.max }
+    @daily_min_temps = @daily_temperatures.map { |day_temps| day_temps.compact.min }
+    @daily_dates = @daily_temperatures.map { |day_temps| day_temps.first['timestamp'] }
   end
 
   private
 
   def daily_temperatures
-    hourly_temps = @forecast['hourly']['temperature_2m']
-    daily_temps = hourly_temps.each_slice(24).to_a
-    # Assuming each element of daily_temps is an array of hourly temperatures for a day
-    # You may need to adjust this based on the structure of your @forecast data
-
-    daily_temps.map do |day_temps|
-      day_temps.map do |hourly_temp|
-        hourly_temp['timestamp'] if hourly_temp.is_a?(Hash)
-      end
-    end
+    # Modify this method to extract and organize the temperature data by day
+    # For example, you might want to group by date and then get hourly temperatures for each day
+    # Replace this with the actual logic to structure your daily temperatures
+    @forecast['hourly']['temperature_2m'].group_by { |hourly_data| hourly_data['timestamp'].to_date }
   end
 
 

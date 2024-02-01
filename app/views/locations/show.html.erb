@@ -3,14 +3,22 @@
 <%= render @location %>
 
 <div>
-  <% @daily_temperatures.each_with_index do |day_temps, index| %>
-    <div>
-      <p>Date: <%= day_temps.first['timestamp'] %></p>
-      <p>Max Temperature: <%= @daily_max_temps[index] %>°C</p>
-      <p>Min Temperature: <%= @daily_min_temps[index] %>°C</p>
-    </div>
+  <h1>Weather Forecast For This Location</h1>
+  <% if @daily_temperatures.present? %>
+    <ul>
+      <% @daily_dates.each_with_index do |date, index| %>
+        <li>
+          Date: <%= date %>,
+          High: <%= @daily_max_temps[index] %>°C,
+          Low: <%= @daily_min_temps[index] %>°C
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Could not retrieve weather forecast.</p>
   <% end %>
 </div>
+
 
 <div>
   <%= link_to "Edit this location", edit_location_path(@location) %> |
