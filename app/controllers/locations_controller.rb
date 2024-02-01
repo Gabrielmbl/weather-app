@@ -8,11 +8,25 @@ class LocationsController < ApplicationController
 
   # GET /locations/1 or /locations/1.json
   def show
-    latitude = 52.52
-    longitude = 13.41
+    @location = Location.find(params[:id])  # Assuming you have the Location model
 
-    weather_service = WeatherService.new(latitude, longitude)
-    @forecast = weather_service.forecast
+    geocoding_service = GeocodingService.new(@location.text_address)
+    geocoding_result = geocoding_service.geocode
+
+    # Check if geocoding was successful
+    if geocoding_result['latt'].present? && geocoding_result['longt'].present?
+      latitude = geocoding_result['latt'].to_f
+      longitude = geocoding_result['longt'].to_f
+
+      weather_service = WeatherService.new(latitude, longitude)
+      @forecast = weather_service.forecast
+
+      @address = @location.text_address  # Use the text_address from the @location object
+    else
+      # Handle geocoding error
+      flash[:alert] = 'Error in geocoding the address.'
+      redirect_to root_path
+    end
   end
 
   # GET /locations/new
