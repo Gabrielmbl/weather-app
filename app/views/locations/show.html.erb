@@ -10,7 +10,7 @@
       <% daily_data.each do |hourly_data| %>
         <% Rails.logger.info("hourly_data: #{hourly_data.inspect}") %>
         <li>
-          <% if hourly_data.first %>
+          <% if hourly_data.first.is_a?(String) %>
             <% date = hourly_data.first.split('T').first %>
             <% max_temp = hourly_data.max %>
             <% min_temp = hourly_data.min %>
