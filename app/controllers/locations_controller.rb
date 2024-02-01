@@ -1,5 +1,3 @@
-require_relative '../services/geocoding_service'
-
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
 
