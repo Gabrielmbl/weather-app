@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-class IPInfoService
+class IpInfoService
   def initialize(ip, format = 'json')
     @ip = ip
     @format = format
