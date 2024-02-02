@@ -6,7 +6,9 @@ for previous locations listed with IP addresses and regular addreses. Also, on t
 you can select `New location` and type in the information for you to get the weather forecast for a
 new location. <br />
 When clicking `Show this location`, you can edit it, and even delete it by clicking
-`Destroy this location`.
+`Destroy this location`. <br />
+APIs https://ipapi.co/ , https://geocode.xyz/api , and https://open-meteo.com/en/docs were used for this project.
+
 
 ## Prerequisites
 - AWS Cloud9:
