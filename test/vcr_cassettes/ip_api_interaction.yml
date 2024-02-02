@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ipapi.co/8.8.8.8/json/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ipapi.co
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Feb 2024 01:25:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Allow:
+      - GET, POST, OPTIONS, OPTIONS, HEAD
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Host, origin
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - same-origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=rH8X7Fd7A5LUpxKBQgb0VsZqN7Y%2ByV9a4Qw%2FdnGD7zMdvLzFfs9ArXqK5qfvPWjlOGXm0RR4ImrYrLYan8QwKDLkP7RKG75paAYwHV5UlNGDB1Xa6uofYg8t"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 84eea466e84f2ade-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+            "ip": "8.8.8.8",
+            "network": "8.8.8.0/24",
+            "version": "IPv4",
+            "city": "Mountain View",
+            "region": "California",
+            "region_code": "CA",
+            "country": "US",
+            "country_name": "United States",
+            "country_code": "US",
+            "country_code_iso3": "USA",
+            "country_capital": "Washington",
+            "country_tld": ".us",
+            "continent_code": "NA",
+            "in_eu": false,
+            "postal": "94043",
+            "latitude": 37.42301,
+            "longitude": -122.083352,
+            "timezone": "America/Los_Angeles",
+            "utc_offset": "-0800",
+            "country_calling_code": "+1",
+            "currency": "USD",
+            "currency_name": "Dollar",
+            "languages": "en-US,es-US,haw,fr",
+            "country_area": 9629091.0,
+            "country_population": 327167434,
+            "asn": "AS15169",
+            "org": "GOOGLE"
+        }
+  recorded_at: Fri, 02 Feb 2024 01:25:46 GMT
+recorded_with: VCR 6.2.0

@@ -45,4 +45,17 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to locations_url
   end
+
+  test "should not create location with invalid data" do
+    assert_no_difference("Location.count") do
+      post locations_url, params: {location: {ip_address: nil, text_address: nil } }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "should not update location with invalid data" do
+    patch location_url(@location), params: {location: {ip_address: nil, text_address: nil } }
+    assert_response :unprocessable_entity
+  end
 end
