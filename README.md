@@ -1,6 +1,6 @@
 # Weather_app
 
-Going to [weather_app](https://aqueous-reef-72990-bd95d46ca81d.herokuapp.com/),
+Going to the deployed app with Heroku on [weather_app](https://aqueous-reef-72990-bd95d46ca81d.herokuapp.com/),
 you can view the weather forecast for the next 7 days (high and low temperatures)
 for previous locations listed with IP addresses and regular addreses. Also, on the bottom of the page
 you can select `New location` and type in the information for you to get the weather forecast for a
