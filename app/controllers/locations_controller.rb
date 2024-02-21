@@ -9,14 +9,13 @@ class LocationsController < ApplicationController
   # GET /locations/1 or /locations/1.json
   def show
     @location = Location.find(params[:id])
-    puts "request.remote_ip: #{request.remote_ip}"
-    @forecast = @location.current_forecast(ipv6_address = request.remote_ip)
-    @address = @location.text_address
   end
 
   # GET /locations/new
   def new
     @location = Location.new
+    @forecast = @location.current_forecast(ipv6_address = request.remote_ip)
+    @address = @location.text_address
   end
 
   # GET /locations/1/edit
