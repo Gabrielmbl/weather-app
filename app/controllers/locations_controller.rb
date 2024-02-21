@@ -9,39 +9,10 @@ class LocationsController < ApplicationController
   # GET /locations/1 or /locations/1.json
   def show
     @location = Location.find(params[:id])
-
-    # Try to get latitude and longitude from the IP API
-    ip_info_service = IpInfoService.new(@location.ip_address)
-    ip_info = ip_info_service.get_info
-
-    if ip_info['error'].nil? && ip_info['latitude'].present? && ip_info['longitude'].present?
-      # Successfully retrieved latitude and longitude from IP API
-      latitude = ip_info['latitude'].to_f
-      longitude = ip_info['longitude'].to_f
-    else
-      # Fallback to geocoding service
-      geocoding_service = GeocodingService.new(@location.text_address)
-      geocoding_result = geocoding_service.geocode
-
-      # Check if geocoding was successful
-      if geocoding_result['latt'].present? && geocoding_result['longt'].present?
-        latitude = geocoding_result['latt'].to_f
-        longitude = geocoding_result['longt'].to_f
-      else
-        # Handle both IP and geocoding errors
-        flash[:alert] = 'Error in retrieving location information.'
-        redirect_to root_path
-        return
-      end
-    end
-
-    # Use latitude and longitude to fetch weather forecast
-    weather_service = WeatherService.new(latitude, longitude)
-    @forecast = weather_service.forecast
-
-    @address = @location.text_address  # Use the text_address from the @location object
+    puts "request.remote_ip: #{request.remote_ip}"
+    @forecast = @location.current_forecast(ipv6_address = request.remote_ip)
+    @address = @location.text_address
   end
-
 
   # GET /locations/new
   def new

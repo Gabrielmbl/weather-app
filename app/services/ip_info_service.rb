@@ -2,16 +2,25 @@ require 'uri'
 require 'net/http'
 require 'json'
 
+
 class IpInfoService
   def initialize(ip, format = 'json')
     @ip = ip
     @format = format
   end
 
-  def get_info
-    uri = URI.parse("https://ipapi.co/#{@ip}/#{@format}/")
-    response = Net::HTTP.get(uri)
-    puts "IP API Response: #{response}"
-    JSON.parse(response)
+  def info
+    url = URI("https://ipapi.co/#{@ip}/json/")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    response = http.request(request)
+
+    if response.code == '200'
+      JSON.parse(response.body, symbolize_names: true)
+    else
+      { error: 'Failed to retrieve location information' }
+    end
   end
 end

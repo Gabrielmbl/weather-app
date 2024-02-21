@@ -84,6 +84,9 @@ rails db:create
 # Migrate
 rails db:migrate
 
+# Test
+rails test
+
 # Start the application locally
 rails server
 
