@@ -6,9 +6,13 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
+  # Find where I save text_address, to also save ip_address
+
   # GET /locations/1 or /locations/1.json
   def show
     @location = Location.find(params[:id])
+    @forecast = Forecast.find_by(location_id: params[:id])
+    # @forecast = @location.current_forecast(@location.ip_address)
   end
 
   # GET /locations/new
@@ -16,6 +20,7 @@ class LocationsController < ApplicationController
     @location = Location.new
     @forecast = @location.current_forecast(ipv6_address = request.remote_ip)
     @address = @location.text_address
+    @location.ip_address = request.remote_ip
   end
 
   # GET /locations/1/edit
@@ -24,10 +29,12 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
+    # TODO find out where is location_params coming from. I need to create a location object with IP address as well
     @location = Location.new(location_params)
 
     respond_to do |format|
       if @location.save
+        Forecast.create_forecasts(@location.id)
         format.html { redirect_to location_url(@location), notice: "Location was successfully created." }
         format.json { render :show, status: :created, location: @location }
       else
