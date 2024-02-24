@@ -1,7 +1,6 @@
 class Forecast < ApplicationRecord
   belongs_to :location
 
-    # TODO Need to have ip as a parameter here maybe. Depends if I can create create location objects with IP
   def self.create_forecasts(location_id)
     location = Location.find(location_id)
     weather_service = WeatherService.new(location.latitude(location.ip_address), location.longitude(location.ip_address))

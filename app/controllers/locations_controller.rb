@@ -12,7 +12,6 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @forecasts = @location.forecasts
-    # @forecast = Forecast.find_by(location_id: params[:id])
   end
 
   # GET /locations/new

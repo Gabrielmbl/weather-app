@@ -40,4 +40,21 @@ class LocationsTest < ApplicationSystemTestCase
 
     assert_text "Location was successfully destroyed"
   end
+
+  # test "visiting the show page" do
+  #   location = locations(:one)
+
+  #   visit location_path(location)
+
+  #   assert_text "Location Details"
+  #   assert_text "Address: #{location.text_address}"
+  #   assert_text "IP Address: #{location.ip_address}"
+  #   assert_selector "table#forecasts_table"
+  #   assert_selector "table#forecasts_table tr", count: location.forecasts.count
+  #   location.forecasts.each do |forecast|
+  #     assert_selector "table#forecasts_table", text: forecast.date.to_s
+  #     assert_selector "table#forecasts_table", text: forecast.high_temperature.to_s
+  #     assert_selector "table#forecasts_table", text: forecast.low_temperature.to_s
+  #   end
+  # end
 end

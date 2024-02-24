@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ip_address: MyString
-  text_address: MyString
+  ip_address: 67.253.249.27
+  text_address: First_Address
 
 two:
-  ip_address: MyString
-  text_address: MyString
+  ip_address: 66.176.86.75
+  text_address: Second_Address

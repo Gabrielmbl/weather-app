@@ -1,7 +1,7 @@
 # Location Model
 
 class Location < ApplicationRecord
-  validates :text_address, presence: true
+  validates :text_address, presence: false
   validates :ip_address, presence: true
 
   has_many :forecasts, dependent: :destroy
