@@ -11,8 +11,8 @@ class LocationsController < ApplicationController
   # GET /locations/1 or /locations/1.json
   def show
     @location = Location.find(params[:id])
-    @forecast = Forecast.find_by(location_id: params[:id])
-    # @forecast = @location.current_forecast(@location.ip_address)
+    @forecasts = @location.forecasts
+    # @forecast = Forecast.find_by(location_id: params[:id])
   end
 
   # GET /locations/new
@@ -31,6 +31,7 @@ class LocationsController < ApplicationController
   def create
     # TODO find out where is location_params coming from. I need to create a location object with IP address as well
     @location = Location.new(location_params)
+    @location.ip_address = request.remote_ip
 
     respond_to do |format|
       if @location.save

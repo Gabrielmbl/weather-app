@@ -4,19 +4,18 @@
 
 <div>
   <h1>Weather Forecast For This Location</h1>
-  <p>Address: <%= @address %></p>
-  <% if @forecast && @forecast[:forecast] %>
+  <% if @forecasts.any? %>
     <ul>
-      <% @forecast[:forecast].each do |forecast| %>
+      <% @forecasts.each do |forecast| %>
         <li>
-          Date: <%= forecast[:date] %>,
-          High: <%= forecast[:high] %>°C,
-          Low: <%= forecast[:low] %>°C
+          Date: <%= forecast.date %>,
+          High: <%= forecast.high_temperature %>°C,
+          Low: <%= forecast.low_temperature %>°C
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p><%= @forecast[:error] %></p>
+    <p>No forecast data available for this location.</p>
   <% end %>
 </div>
 
