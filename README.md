@@ -36,6 +36,8 @@ APIs https://ipapi.co/ , https://geocode.xyz/api , and https://open-meteo.com/en
     gem 'httparty'
     gem 'assert_json'
     gem 'json_expressions'
+    gem 'rspec-html-matchers'
+    gem 'image-charts'
 
     group :development, :test do
       gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]

@@ -3,20 +3,32 @@
 <%= render @location %>
 
 <div>
-  <h1>Weather Forecast For This Location</h1>
   <% if @forecasts.any? %>
-    <ul>
-      <% @forecasts.each do |forecast| %>
-        <li>
-          Date: <%= forecast.date %>,
-          High: <%= forecast.high_temperature %>°F,
-          Low: <%= forecast.low_temperature %>°F
-        </li>
+  <div>
+    <div>
+      <h1>Weather Forecast For This Location</h1>
+        <ul>
+          <% @forecasts.each do |forecast| %>
+            <li>
+              Date: <%= forecast.date %>,
+              High: <%= forecast.high_temperature %>°F,
+              Low: <%= forecast.low_temperature %>°F
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No forecast data available for this location.</p>
       <% end %>
-    </ul>
-  <% else %>
-    <p>No forecast data available for this location.</p>
-  <% end %>
+    </div>
+
+    <div>
+      <h1>Temperature Forecast Graph</h1>
+      <% dates = @forecasts.map { |forecast| forecast.date.to_s } %>
+      <% high_temps = @forecasts.map { |forecast| forecast.high_temperature } %>
+      <% low_temps = @forecasts.map { |forecast| forecast.low_temperature } %>
+      <%= image_tag "https://image-charts.com/chart?cht=lc&chs=800x400&chd=t:#{high_temps.join(',')}|#{low_temps.join(',')}&chxt=x,y&chxl=0:|#{dates.join('|')}&chdl=High+Temperature|Low+Temperature&chco=FF0000,0000FF", alt: "Temperature Chart" %>
+    </div>
+
 </div>
 
 <div>
@@ -25,3 +37,5 @@
 
   <%= button_to "Destroy this location", @location, method: :delete %>
 </div>
+
+

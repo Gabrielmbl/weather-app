@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
-    @forecast = @location.current_forecast(ipv6_address = request.remote_ip)
+    @forecast = @location.current_forecast(ip = request.remote_ip)
     @address = @location.text_address
     @location.ip_address = request.remote_ip
   end

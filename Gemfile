@@ -16,6 +16,8 @@ gem "pg", "1.3.5"
 gem 'httparty'
 gem 'assert_json'
 gem 'json_expressions'
+gem 'rspec-html-matchers'
+gem 'image-charts'
 
 group :development, :test do
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
