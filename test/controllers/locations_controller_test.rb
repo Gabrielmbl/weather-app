@@ -16,12 +16,22 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create location" do
-    assert_difference("Location.count") do
-      post locations_url, params: { location: { ip_address: @location.ip_address, text_address: @location.text_address } }
+    VCR.use_cassette('weather_api') do
+      assert_difference("Location.count") do
+        post locations_url, params: { location: { ip_address: @location.ip_address, text_address: @location.text_address } }
+      end
     end
 
     assert_redirected_to location_url(Location.last)
   end
+
+  # test "should create location" do
+  #   assert_difference("Location.count") do
+  #     post locations_url, params: { location: { ip_address: @location.ip_address, text_address: @location.text_address } }
+  #   end
+
+  #   assert_redirected_to location_url(Location.last)
+  # end
 
   test "should show location" do
     get location_url(@location)

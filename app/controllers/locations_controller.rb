@@ -17,9 +17,9 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
-    @forecast = @location.current_forecast(ip = request.remote_ip)
-    @address = @location.text_address
-    @location.ip_address = request.remote_ip
+    # @forecast = @location.current_forecast(ip = request.headers['X-Forwarded-For'].split(',').first.strip)
+    # @address = @location.text_address
+    # @location.ip_address = request.headers['X-Forwarded-For'].split(',').first.strip if request.headers['X-Forwarded-For']
   end
 
   # GET /locations/1/edit
@@ -30,7 +30,9 @@ class LocationsController < ApplicationController
   def create
     # TODO find out where is location_params coming from. I need to create a location object with IP address as well
     @location = Location.new(location_params)
-    @location.ip_address = request.remote_ip
+    # @location.ip_address = request.remote_ip
+    @location.ip_address = request.headers['X-Forwarded-For'].split(',').first.strip if request.headers['X-Forwarded-For']
+
 
     respond_to do |format|
       if @location.save

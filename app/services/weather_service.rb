@@ -8,12 +8,13 @@ class WeatherService
 
   def forecast
     response = self.class.get('/forecast', @options)
-    puts "API Response Code: #{response.code}"
-    puts "API Response: #{response.body}"
+    # puts "API Response Code: #{response.code}"
+    # puts "API Response: #{response.body}"
     response
   end
 
   def parse_forecast
+    # puts "forecast.body: #{forecast.body}"
     parsed_response = JSON.parse(forecast.body)
 
     if parsed_response['daily'] && parsed_response['daily']['time']
@@ -26,7 +27,7 @@ class WeatherService
         }
       end
 
-      puts "Forecast Data: #{forecast_data}"
+      # puts "Forecast Data: #{forecast_data}"
 
       { forecast: forecast_data }
     else

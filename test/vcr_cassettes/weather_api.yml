@@ -1,0 +1,227 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ipapi.co/67.253.249.27/json/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ipapi.co
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Feb 2024 04:21:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Allow:
+      - OPTIONS, GET, POST, OPTIONS, HEAD
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Host, origin
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - same-origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=TcWyeVK1EMGKmPhE2yWJBvkjvji0Bsswy6DTbIF8JNDDg4F6GLcQvKq4kNAn5hJzUMX2Lu8Y1T9NsrO38CCSV1KqN8R6AjhslNxRK9z0D%2Blca1%2B5XxkS2eAj"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 85bda4a74c4b10df-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+            "ip": "67.253.249.27",
+            "network": "67.253.248.0/23",
+            "version": "IPv4",
+            "city": "Perry",
+            "region": "New York",
+            "region_code": "NY",
+            "country": "US",
+            "country_name": "United States",
+            "country_code": "US",
+            "country_code_iso3": "USA",
+            "country_capital": "Washington",
+            "country_tld": ".us",
+            "continent_code": "NA",
+            "in_eu": false,
+            "postal": "14530",
+            "latitude": 42.7217,
+            "longitude": -78.0104,
+            "timezone": "America/New_York",
+            "utc_offset": "-0500",
+            "country_calling_code": "+1",
+            "currency": "USD",
+            "currency_name": "Dollar",
+            "languages": "en-US,es-US,haw,fr",
+            "country_area": 9629091.0,
+            "country_population": 327167434,
+            "asn": "AS11351",
+            "org": "TWC-11351-NORTHEAST"
+        }
+  recorded_at: Tue, 27 Feb 2024 04:21:49 GMT
+- request:
+    method: get
+    uri: https://ipapi.co/67.253.249.27/json/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ipapi.co
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Feb 2024 04:21:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Allow:
+      - OPTIONS, GET, POST, OPTIONS, HEAD
+      X-Frame-Options:
+      - DENY
+      Vary:
+      - Host, origin
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - same-origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=ENJ7uRRTvXUv8dHpI78yIMSt0AElXkmumMpf4E1qILm1vnMCMK4v7uNvpDYRLxJ7P6xn1P1m3jPMR7XlxSr45JWbe674PbbSlxOs2vv9spx29PQLLaLm%2BgUb"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 85bda4a82983e25b-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+            "ip": "67.253.249.27",
+            "network": "67.253.248.0/23",
+            "version": "IPv4",
+            "city": "Perry",
+            "region": "New York",
+            "region_code": "NY",
+            "country": "US",
+            "country_name": "United States",
+            "country_code": "US",
+            "country_code_iso3": "USA",
+            "country_capital": "Washington",
+            "country_tld": ".us",
+            "continent_code": "NA",
+            "in_eu": false,
+            "postal": "14530",
+            "latitude": 42.7217,
+            "longitude": -78.0104,
+            "timezone": "America/New_York",
+            "utc_offset": "-0500",
+            "country_calling_code": "+1",
+            "currency": "USD",
+            "currency_name": "Dollar",
+            "languages": "en-US,es-US,haw,fr",
+            "country_area": 9629091.0,
+            "country_population": 327167434,
+            "asn": "AS11351",
+            "org": "TWC-11351-NORTHEAST"
+        }
+  recorded_at: Tue, 27 Feb 2024 04:21:49 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?daily=temperature_2m_max,temperature_2m_min&latitude=42.7217&longitude=-78.0104&temperature_unit=fahrenheit
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Feb 2024 04:21:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJsYXRpdHVkZSI6NDIuNzI3NiwibG9uZ2l0dWRlIjotNzguMDI0NDc1LCJnZW5lcmF0aW9udGltZV9tcyI6MC4wNTEwMjE1NzU5Mjc3MzQzNzUsInV0Y19vZmZzZXRfc2Vjb25kcyI6MCwidGltZXpvbmUiOiJHTVQiLCJ0aW1lem9uZV9hYmJyZXZpYXRpb24iOiJHTVQiLCJlbGV2YXRpb24iOjQyNy4wLCJkYWlseV91bml0cyI6eyJ0aW1lIjoiaXNvODYwMSIsInRlbXBlcmF0dXJlXzJtX21heCI6IsKwRiIsInRlbXBlcmF0dXJlXzJtX21pbiI6IsKwRiJ9LCJkYWlseSI6eyJ0aW1lIjpbIjIwMjQtMDItMjciLCIyMDI0LTAyLTI4IiwiMjAyNC0wMi0yOSIsIjIwMjQtMDMtMDEiLCIyMDI0LTAzLTAyIiwiMjAyNC0wMy0wMyIsIjIwMjQtMDMtMDQiXSwidGVtcGVyYXR1cmVfMm1fbWF4IjpbNjUuMiw2MC45LDI3LjcsNDcuMyw0NC4wLDU3LjksNTguNl0sInRlbXBlcmF0dXJlXzJtX21pbiI6WzM3LjcsMjcuMSwxOC43LDIzLjksMzUuMyw0MC4xLDQ2LjFdfX0=
+  recorded_at: Tue, 27 Feb 2024 04:21:49 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?daily=temperature_2m_max,temperature_2m_min&latitude=42.7217&longitude=-78.0104&temperature_unit=fahrenheit
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Feb 2024 04:21:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJsYXRpdHVkZSI6NDIuNzI3NiwibG9uZ2l0dWRlIjotNzguMDI0NDc1LCJnZW5lcmF0aW9udGltZV9tcyI6MC4wNTkwMDg1OTgzMjc2MzY3MiwidXRjX29mZnNldF9zZWNvbmRzIjowLCJ0aW1lem9uZSI6IkdNVCIsInRpbWV6b25lX2FiYnJldmlhdGlvbiI6IkdNVCIsImVsZXZhdGlvbiI6NDI3LjAsImRhaWx5X3VuaXRzIjp7InRpbWUiOiJpc284NjAxIiwidGVtcGVyYXR1cmVfMm1fbWF4IjoiwrBGIiwidGVtcGVyYXR1cmVfMm1fbWluIjoiwrBGIn0sImRhaWx5Ijp7InRpbWUiOlsiMjAyNC0wMi0yNyIsIjIwMjQtMDItMjgiLCIyMDI0LTAyLTI5IiwiMjAyNC0wMy0wMSIsIjIwMjQtMDMtMDIiLCIyMDI0LTAzLTAzIiwiMjAyNC0wMy0wNCJdLCJ0ZW1wZXJhdHVyZV8ybV9tYXgiOls2NS4yLDYwLjksMjcuNyw0Ny4zLDQ0LjAsNTcuOSw1OC42XSwidGVtcGVyYXR1cmVfMm1fbWluIjpbMzcuNywyNy4xLDE4LjcsMjMuOSwzNS4zLDQwLjEsNDYuMV19fQ==
+  recorded_at: Tue, 27 Feb 2024 04:21:50 GMT
+recorded_with: VCR 6.2.0
