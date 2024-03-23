@@ -15,7 +15,7 @@ APIs https://ipapi.co/ , https://geocode.xyz/api , and https://open-meteo.com/en
   - Ubuntu Server
   - Instance Type: I opted for m4.large (8 GIB RAM + 2vCPU) so that I would not run out of space, as it happened before when I was testing other tutorials.
 - Gemfile:
-  - After cloning project from GitHub, run `bundle instal` to make sure that the dependencies are in your machine.
+  - After cloning project from GitHub, run `bundle install` to make sure that the dependencies are in your machine.
   - /weather_app/Gemfile:
     ```ruby
     source "https://rubygems.org"
